@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TargetDiseaseMapppingMapper">
+    <resultMap id="TargetDiseaseMapppingMap" type="com.example.demo.entity.TargetDiseaseMappping">
+        <result column="targetid" property="targetid"/>
+        <result column="targname" property="targname"/>
+        <result column="clinical_status" property="clinicalStatus"/>
+    </resultMap>
+    <select id="queryByTargetId" resultMap="TargetDiseaseMapppingMap" parameterType="java.lang.String">
+        SELECT targetid,targname,clinical_status
+        FROM target_disease_mapping
+        WHERE targetid=#{targetid}
+    </select>
+</mapper>

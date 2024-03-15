@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TargetMapper">
+    <select id="queryByTargetId" resultType="com.example.demo.entity.Target" parameterType="java.lang.String">
+        SELECT targetid,formerid,uniproid,targname,genename,targtype,synonyms,functions,pdbstruc,bioclass,ecnumber,sequence,druginfo,keggpath,wikipath,whizpath,reacpath,net_path,intepath,pantpath,biocpath
+        FROM target
+        WHERE targetid=#{targetid}
+    </select>
+
+    <select id="queryByIdNameAndSynonyms" resultType="com.example.demo.entity.Target" parameterType="java.lang.String">
+        SELECT targetid,formerid,uniproid,targname,genename,targtype,synonyms,functions,pdbstruc,bioclass,ecnumber,sequence,druginfo,keggpath,wikipath,whizpath,reacpath,net_path,intepath,pantpath,biocpath
+        FROM target
+        WHERE targetid=#{targetid} OR targname like CONCAT('%', #{targetid}, '%') OR synonyms like CONCAT('%', #{targetid}, '%')
+    </select>
+</mapper>
